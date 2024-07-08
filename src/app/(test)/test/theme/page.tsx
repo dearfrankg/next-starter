@@ -8,7 +8,7 @@ export default function Home() {
   const theme = cookies().get("theme") || defaultTheme;
 
   return (
-    <main className="mx-auto mt-20 max-w-5xl space-y-8">
+    <main className="mx-auto mt-20 max-w-5xl space-y-8 p-8">
       <TestSubMenu />
 
       <div className="flex flex-col items-center gap-8 rounded-md">
