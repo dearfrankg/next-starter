@@ -1,5 +1,7 @@
 import "./globals.css";
 import { Providers } from "./providers";
+import NavBar from "@/components/navbar";
+import { cn } from "@/lib/utils";
 import { Theme } from "@/types";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -22,8 +24,11 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={theme?.value}>
-      <body className={inter.className}>
-        <Providers>{children}</Providers>
+      <body className={cn(inter.className, "min-h-screen")}>
+        <Providers>
+          <NavBar {...{ theme: theme?.value as Theme }} />
+          {children}
+        </Providers>
       </body>
     </html>
   );

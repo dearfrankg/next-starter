@@ -1,14 +1,19 @@
 import NextButtons from "@/components/demo/next-buttons";
 import ShadButtons from "@/components/demo/shad-buttons";
+import TestSubMenu from "@/components/test/submenu";
 
 export default function UI() {
   return (
-    <main className="flex flex-col items-center gap-8 p-24">
-      {/* shadcn-ui works with blue theme */}
-      <ShadButtons />
+    <main className="mx-auto mt-20 max-w-5xl space-y-8">
+      <TestSubMenu />
 
-      {/* next-ui works with buttons */}
-      <NextButtons />
+      <div className="flex flex-col gap-8">
+        {/* shadcn-ui works with blue theme */}
+        <ShadButtons />
+
+        {/* next-ui works with buttons */}
+        <NextButtons />
+      </div>
     </main>
   );
 }

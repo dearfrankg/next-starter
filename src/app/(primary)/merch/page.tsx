@@ -4,7 +4,7 @@ import PageWithNav from "@/components/page-with-nav";
 export default function Home() {
   return (
     <PageWithNav>
-      <H1>Home Page</H1>
+      <H1>Merch</H1>
     </PageWithNav>
   );
 }
