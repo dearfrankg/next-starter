@@ -1,7 +1,9 @@
 import "./globals.css";
 import { Providers } from "./providers";
+import { Theme } from "@/types";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { cookies } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +17,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const defaultTheme = { value: Theme.dark };
+  const theme = cookies().get("theme") || defaultTheme;
+
   return (
-    <html lang="en">
+    <html lang="en" className={theme?.value}>
       <body className={inter.className}>
         <Providers>{children}</Providers>
       </body>
