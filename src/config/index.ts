@@ -3,6 +3,7 @@ import { AcmeLogo } from "@/assets/acme-logo";
 export const config = {
   company: {
     name: "ACME",
+    description: "A friendly globally minded company",
     logo: AcmeLogo,
   },
   nav: [
