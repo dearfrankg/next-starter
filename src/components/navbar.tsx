@@ -1,6 +1,7 @@
 "use client";
 
 import ThemeSwitcher from "./theme-switcher";
+import { AcmeLogo } from "@/assets/acme-logo";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,9 +23,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { config } from "@/config";
-import { cn } from "@/lib/utils";
 import { Theme } from "@/types";
-import "@radix-ui/react-avatar";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -65,7 +65,7 @@ function Left() {
       <DrawerMenu />
       <Link href="/">
         <div className="flex items-center">
-          <config.company.logo />
+          <AcmeLogo />
           <p className="font-bold text-inherit">{config.company.name}</p>
         </div>
       </Link>
@@ -84,7 +84,7 @@ function Right(props: ThemeSwitchProps) {
         return (
           <div key={obj.name} className="hidden sm:block">
             <Link href={obj.href}>
-              <span className="text-lg">{obj.name}</span>
+              <span className="text-nowrap text-lg">{obj.name}</span>
             </Link>
           </div>
         );
@@ -98,24 +98,33 @@ function Right(props: ThemeSwitchProps) {
 }
 
 function UserMenu(props: ThemeSwitchProps) {
+  const session = useSession();
+
   const menuItemClasses =
     "flex h-5 w-full justify-start items-center hover:bg-accent text-lg font-light px-2 py-5 m-0 ";
+  const isLoading = session.status === "loading";
+  const name = session?.data?.user?.name;
+  const email = session?.data?.user?.email;
+  const image = session?.data?.user?.image || undefined;
+
+  if (isLoading || !name) {
+    return <Button onClick={() => signIn()}>Sign In</Button>;
+  }
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar>
           <AvatarImage
-            src="https://github.com/shadcn.png"
+            src={image || "/avatar_placeholder"}
             alt="@shadcn"
             className=""
           />
-          <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="m-0 mx-4 w-[200px] space-y-0 rounded-lg border-2 p-0">
         <DropdownMenuLabel className="p-0">
-          <div className={"my-2 px-2 text-lg font-medium"}>Frank Gutierrez</div>
+          <div className={"my-2 px-2 text-lg font-medium"}>{name}</div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="h-[2px]" />
         <DropdownMenuItem className="p-0">
@@ -131,7 +140,15 @@ function UserMenu(props: ThemeSwitchProps) {
           </div>
         </DropdownMenuItem>
         <DropdownMenuItem className="p-0">
-          <div className={menuItemClasses}>
+          <div
+            className={menuItemClasses}
+            onClick={() => {
+              signOut({
+                redirect: true,
+                callbackUrl: "/",
+              });
+            }}
+          >
             <GoSignOut className="mr-2" />
             Sign Out
           </div>
@@ -191,103 +208,3 @@ export function DrawerMenu() {
     </Drawer>
   );
 }
-
-/*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
-
-// return (
-//   <Navbar
-//     disableAnimation
-//     maxWidth="xl"
-//     isMenuOpen={isMenuOpen}
-//     onMenuOpenChange={setIsMenuOpen}
-//   >
-//     <div className="h-10 justify-start sm:hidden">
-//       <NavbarMenuToggle />
-//     </div>
-
-//     <NavbarContent>
-//       <NavbarBrand>
-//         <Link href="/" color="foreground">
-//           <div className="flex items-center">
-//             <config.company.logo />
-//             <p className="font-bold text-inherit">{config.company.name}</p>
-//           </div>
-//         </Link>
-//       </NavbarBrand>
-//     </NavbarContent>
-
-//     <NavbarContent as="div" justify="end">
-//       <div className="flex items-center gap-4">
-//         {config.nav.map((obj) => {
-//           return (
-//             <NavbarItem key={obj.name} className="hidden sm:block">
-//               <Link href={obj.href}>{obj.name}</Link>
-//             </NavbarItem>
-//           );
-//         })}
-
-//         <ThemeSwitcher theme={theme} />
-
-//         <UserMenu />
-//       </div>
-//     </NavbarContent>
-
-//     <NavbarMenu>
-//       {config.nav.map((item, index) => (
-//         <NavbarMenuItem key={`${item}-${index}`}>
-//           <Link className="w-full" href={item.href} size="lg">
-//             {item.name}
-//           </Link>
-//         </NavbarMenuItem>
-//       ))}
-//     </NavbarMenu>
-//   </Navbar>
-// );
-
-// function UserMenu() {
-//   return (
-//     <Dropdown placement="bottom-end">
-//       <DropdownTrigger>
-//         <Avatar
-//           isBordered
-//           as="button"
-//           className="transition-transform"
-//           color="secondary"
-//           name="Jason Hughes"
-//           size="sm"
-//           src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-//         />
-//       </DropdownTrigger>
-//       <DropdownMenu aria-label="Profile Actions" variant="flat">
-//         <DropdownItem key="profile" className="h-14 gap-2">
-//           <p className="font-semibold">Signed in as</p>
-//           <p className="font-semibold">zoey@example.com</p>
-//         </DropdownItem>
-//         <DropdownItem key="settings">My Settings</DropdownItem>
-//         <DropdownItem key="team_settings">Team Settings</DropdownItem>
-//         <DropdownItem key="analytics">Analytics</DropdownItem>
-//         <DropdownItem key="system">System</DropdownItem>
-//         <DropdownItem key="configurations">Configurations</DropdownItem>
-//         <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-//         <DropdownItem key="logout" color="danger">
-//           Log Out
-//         </DropdownItem>
-//       </DropdownMenu>
-//     </Dropdown>
-//   );
-// }

@@ -1,16 +1,19 @@
-import { AcmeLogo } from "@/assets/acme-logo";
-
 export const config = {
   company: {
     name: "ACME",
     description: "A friendly globally minded company",
-    logo: AcmeLogo,
+    logo: "/acme.svg",
   },
   nav: [
     {
       name: "Home",
       type: "link",
       href: "/",
+    },
+    {
+      name: "Dashboard",
+      type: "link",
+      href: "/dashboard",
     },
     {
       name: "Merch",
@@ -30,19 +33,14 @@ export const config = {
       href: "/dashboard",
     },
     {
-      name: "Generate Test",
+      name: "Page X",
       type: "link",
-      href: "/generate-test",
+      href: "/pagex",
     },
     {
-      name: "Study",
+      name: "Page Y",
       type: "link",
-      href: "/study",
-    },
-    {
-      name: "Take Test",
-      type: "link",
-      href: "/take-test",
+      href: "/pagey",
     },
   ],
   testnav: [
@@ -60,6 +58,11 @@ export const config = {
       name: "Test Theme",
       type: "link",
       href: "/test/theme",
+    },
+    {
+      name: "Test Auth",
+      type: "link",
+      href: "/test/auth",
     },
   ],
 };

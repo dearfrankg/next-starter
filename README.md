@@ -5,3 +5,4 @@
 - setup shadcn-ui and next-ui
 - add fading dark/light theme
 - add responsive navbar
+- add auth oauth
