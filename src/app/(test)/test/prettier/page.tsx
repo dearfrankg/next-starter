@@ -5,8 +5,20 @@ import Image from "next/image";
 
 export default function ClassSort() {
   return (
-    <main className="mx-auto mt-20 max-w-5xl space-y-8 p-8">
+    <main className="mx-auto max-w-5xl space-y-8 p-8">
       <TestSubMenu />
+
+      <div className="mx-auto w-1/2 space-y-4">
+        <p>
+          Testing prettier is about checking that the code is formatted
+          correctly.
+        </p>
+
+        <p>
+          Look at the source code for this page and the comments will explain
+          how prettier is working correctly.
+        </p>
+      </div>
 
       <div className="mx-auto space-y-8 text-center">
         {/*
