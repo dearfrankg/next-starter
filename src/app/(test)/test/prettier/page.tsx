@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function ClassSort() {
   return (
-    <main className="mx-auto max-w-5xl space-y-8 p-8">
+    <main className="mx-auto max-w-5xl space-y-8 p-4">
       <TestSubMenu />
 
       <div className="mx-auto w-1/2 space-y-4">

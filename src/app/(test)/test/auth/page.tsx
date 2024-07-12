@@ -5,7 +5,7 @@ export default async function TestAuth() {
   const session = await getSession("/test/auth");
 
   return (
-    <main className="mx-auto max-w-5xl space-y-8 p-8">
+    <main className="mx-auto max-w-5xl space-y-8 p-4">
       <TestSubMenu />
 
       <div className="mx-auto flex w-2/3 flex-col items-start gap-8 rounded-md">
