@@ -1,8 +1,9 @@
 import { auth } from "@/auth";
 import TestSubMenu from "@/components/test/submenu";
+import getSession from "@/lib/session";
 
 export default async function TestAuth() {
-  const session = await auth();
+  const session = await getSession();
 
   return (
     <main className="mx-auto max-w-5xl space-y-8 p-8">
