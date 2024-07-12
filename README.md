@@ -6,3 +6,5 @@
 - add fading dark/light theme
 - add responsive navbar
 - add auth oauth
+- add getSession lib
+- add auth config for database

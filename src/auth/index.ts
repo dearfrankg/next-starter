@@ -1,5 +1,8 @@
 import { config } from "@/config";
+import prisma from "@/lib/prisma";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth, { NextAuthConfig } from "next-auth";
+import { Adapter } from "next-auth/adapters";
 import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 
@@ -9,6 +12,13 @@ const authOptions: NextAuthConfig = {
   trustHost: true,
   theme: {
     logo: config.company.logo,
+  },
+  adapter: PrismaAdapter(prisma) as Adapter,
+  callbacks: {
+    session({ session, user }) {
+      session.user.role = user.role;
+      return session;
+    },
   },
   providers: [
     Google({ allowDangerousEmailAccountLinking: true }),
