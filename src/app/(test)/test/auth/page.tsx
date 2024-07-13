@@ -1,17 +1,23 @@
+import { H1 } from "@/components/heading";
+import PageWithNav from "@/components/page-with-nav";
 import TestSubMenu from "@/components/test/submenu";
 import getSession from "@/lib/session";
 
-export default async function TestAuth() {
-  const session = await getSession("/test/auth");
+export default async function DashBoard() {
+  const session = await getSession("/dashboard");
 
   return (
-    <main className="mx-auto max-w-5xl space-y-8 p-4">
+    <PageWithNav>
       <TestSubMenu />
 
+      <H1>Test Auth</H1>
+
       <div className="mx-auto flex w-2/3 flex-col items-start gap-8 rounded-md">
-        <div>next page using server session -- {session?.user?.name}</div>
+        <div className="mx-auto text-center text-lg">
+          next page using server session -- {session?.user?.name}
+        </div>
       </div>
-    </main>
+    </PageWithNav>
   );
 }
 
