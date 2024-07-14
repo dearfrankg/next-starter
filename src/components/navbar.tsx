@@ -66,7 +66,9 @@ function Left() {
       <Link href="/">
         <div className="flex items-center">
           <AcmeLogo />
-          <p className="font-bold text-inherit">{config.company.name}</p>
+          <p className="text-xl font-bold text-inherit">
+            {config.company.name}
+          </p>
         </div>
       </Link>
     </>
