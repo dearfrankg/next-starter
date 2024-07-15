@@ -8,6 +8,8 @@ import Google from "next-auth/providers/google";
 
 export const BASE_PATH = "/api/auth";
 
+const linkingConfig = { allowDangerousEmailAccountLinking: true };
+
 const authOptions: NextAuthConfig = {
   trustHost: true,
   theme: {
@@ -20,10 +22,7 @@ const authOptions: NextAuthConfig = {
       return session;
     },
   },
-  providers: [
-    Google({ allowDangerousEmailAccountLinking: true }),
-    GitHub({ allowDangerousEmailAccountLinking: true }),
-  ],
+  providers: [Google(linkingConfig), GitHub(linkingConfig)],
   basePath: BASE_PATH,
   secret: process.env.AUTH_SECRET,
 };
