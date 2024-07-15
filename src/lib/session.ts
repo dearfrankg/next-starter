@@ -7,10 +7,10 @@ import { cache } from "react";
 export default async function getSession(target?: string) {
   const session = await cache(auth)();
 
-  if (session === null) {
+  if (session === null && target) {
     const encodedTarget = target ? encodeURI(target) : encodeURI("/dashboard");
-
     redirect(`/api/auth/signin?callbackUrl=${encodedTarget}`);
   }
-  return session;
+
+  return { ...session, isAdmin: session?.user?.role === "admin" };
 }
