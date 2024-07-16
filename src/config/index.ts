@@ -16,19 +16,23 @@ export const config: Config = {
       children: [
         {
           name: "Products",
-          description: "Products...",
+          description:
+            "Check out our unique collection of high quality products.",
         },
         {
           name: "Dashboard",
           href: "/dashboard",
+          description: "See our best sellers on the dashboard",
         },
         {
           name: "Product X",
           href: "/productx",
+          description: "Product X is the best in its class",
         },
         {
           name: "Product Y",
           href: "/producty",
+          description: "Product Y is our best seller",
         },
       ],
     },
@@ -37,15 +41,17 @@ export const config: Config = {
       children: [
         {
           name: "Company",
-          description: "Company...",
+          description: "Our product soaks up the sun, and then it's toasted",
         },
         {
           name: "About Us",
           href: "/about",
+          description: "",
         },
         {
           name: "Merch",
           href: "/merch",
+          description: "",
         },
       ],
     },
@@ -81,19 +87,22 @@ export const config: Config = {
       children: [
         {
           name: "Admin",
-          description: "Admin...",
+          description: "",
         },
         {
           name: "Users",
           href: "/admin/users",
+          description: "",
         },
         {
           name: "Secret",
           href: "/admin/secret",
+          description: "",
         },
         {
           name: "Test",
           href: "/test/auth",
+          description: "",
         },
       ],
     },
@@ -108,10 +117,12 @@ export const config: Config = {
         {
           name: "Settings",
           href: "/admin/users",
+          description: "",
         },
         {
           name: "Sign Out",
           signOut: true,
+          description: "",
         },
       ],
     },

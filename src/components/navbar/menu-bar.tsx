@@ -64,16 +64,17 @@ export function NavMenuItem({
   const hasSignIn = !!navItem?.signIn;
   const hasSignout = !!navItem?.signOut;
 
-  const isMenuLink = !hasChildren && hasHref;
+  const isMenuLink = !hasChildren && hasHref && !hasDesc;
   const isMenu = hasChildren && !hasHref;
-  const isMenuLabel = !hasChildren && !hasHref && hasDesc;
+  const isMenuItemLabel = !hasChildren && !hasHref && hasDesc;
+  const isMenuItem = !hasChildren && hasHref && hasDesc;
 
   if (hasSignout) {
     return (
       <NavigationMenuItem className="cursor-pointer rounded-md py-[6px] hover:bg-accent">
         <div
           onClick={() => signOut()}
-          className={cn(navigationMenuTriggerStyle)}
+          className={cn(navigationMenuTriggerStyle, "py-2")}
         >
           <span className="ml-4 text-lg">{navItem.name}</span>
         </div>
@@ -118,23 +119,6 @@ export function NavMenuItem({
     );
   }
 
-  if (isMenuLink) {
-    return (
-      <Link href={navItem.href as string} legacyBehavior passHref>
-        <NavigationMenuItem className="cursor-pointer rounded-md py-[6px] hover:bg-accent">
-          <NavigationMenuLink
-            className={cn(
-              navigationMenuTriggerStyle,
-              "px-4 hover:text-foreground/80",
-            )}
-          >
-            <span className="text-lg">{navItem.name}</span>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-      </Link>
-    );
-  }
-
   if (isMenu) {
     return (
       <NavigationMenuItem>
@@ -156,16 +140,58 @@ export function NavMenuItem({
     );
   }
 
-  if (isMenuLabel) {
+  if (isMenuLink) {
     return (
-      <NavigationMenuLink asChild>
-        <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-4 no-underline outline-none focus:shadow-md md:w-[400px] lg:w-[500px]">
-          <div className="text-lg font-medium">{navItem.name}</div>
-          <p className="pt-2 text-sm leading-tight text-muted-foreground">
-            {navItem.description}
-          </p>
-        </div>
-      </NavigationMenuLink>
+      <Link href={navItem.href as string} legacyBehavior passHref>
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            className={cn(
+              navigationMenuTriggerStyle,
+              "cursor-pointer rounded-md px-4 pb-[8px] pt-[9px] hover:bg-accent",
+            )}
+          >
+            <span className="text-lg">{navItem.name}</span>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      </Link>
+    );
+  }
+
+  if (isMenuItem) {
+    return (
+      <Link href={navItem.href as string} legacyBehavior passHref>
+        <NavigationMenuItem className="cursor-pointer rounded-md py-[6px] hover:bg-accent">
+          <NavigationMenuLink className={cn(navigationMenuTriggerStyle, "p-0")}>
+            <div className="px-4 py-2">
+              <span className="text-lg">{navItem.name}</span>
+              {hasDesc && (
+                <div className="text-sm leading-6 text-muted-foreground">
+                  {navItem.description}
+                </div>
+              )}
+            </div>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      </Link>
+    );
+  }
+
+  if (isMenuItemLabel) {
+    return (
+      <NavigationMenuItem>
+        <NavigationMenuLink asChild>
+          <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted px-4 py-8 no-underline outline-none focus:shadow-md md:w-[400px] lg:w-[500px]">
+            <div className="">
+              <span className="text-lg">{navItem.name}</span>
+              {hasDesc && (
+                <div className="text-sm leading-6 text-muted-foreground">
+                  {navItem.description}
+                </div>
+              )}
+            </div>
+          </div>
+        </NavigationMenuLink>
+      </NavigationMenuItem>
     );
   }
 
