@@ -57,3 +57,12 @@
     @apply bg-background text-foreground transition duration-700;
   }
 }
+
+/* Changes to style the menu-item list of the manu-bar component */
+nav div:last-child {
+  border: none;
+  overflow-x: visible;
+  z-index: 10;
+  background-color: inherit;
+  box-shadow: none;
+}

@@ -1,6 +1,6 @@
-import { H1 } from "@/components/heading";
-import MainSubMenu from "@/components/main/submenu";
+import { H2 } from "@/components/heading";
 import PageWithNav from "@/components/page-with-nav";
+import MainSubMenu from "@/components/products/submenu";
 import getSession from "@/lib/session";
 
 export default async function DashBoard() {
@@ -10,7 +10,7 @@ export default async function DashBoard() {
     <PageWithNav>
       <MainSubMenu />
 
-      <H1>PageY</H1>
+      <H2>Product Y</H2>
     </PageWithNav>
   );
 }

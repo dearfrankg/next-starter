@@ -1,68 +1,119 @@
-export const config = {
+import { Config } from "@/types";
+
+export const config: Config = {
   company: {
     name: "ACME",
     description: "A friendly globally minded company",
     logo: "/acme.svg",
   },
-  nav: [
-    {
+  nav: {
+    home: {
       name: "Home",
-      type: "link",
       href: "/",
     },
-    {
-      name: "Dashboard",
-      type: "link",
-      href: "/dashboard",
+    learning: {
+      name: "Products",
+      children: [
+        {
+          name: "Products",
+          description: "Products...",
+        },
+        {
+          name: "Dashboard",
+          href: "/dashboard",
+        },
+        {
+          name: "Product X",
+          href: "/productx",
+        },
+        {
+          name: "Product Y",
+          href: "/producty",
+        },
+      ],
     },
-    {
-      name: "Merch",
-      type: "link",
-      href: "/merch",
+    company: {
+      name: "Company",
+      children: [
+        {
+          name: "Company",
+          description: "Company...",
+        },
+        {
+          name: "About Us",
+          href: "/about",
+        },
+        {
+          name: "Merch",
+          href: "/merch",
+        },
+      ],
     },
-    {
-      name: "About Us",
-      type: "link",
-      href: "/about",
+    test: {
+      name: "Test",
+      hide: true,
+      children: [
+        {
+          name: "Test",
+          description: "Test...",
+        },
+        {
+          name: "Prettier",
+          href: "/test/prettier",
+        },
+        {
+          name: "UI",
+          href: "/test/ui",
+        },
+        {
+          name: "Theme",
+          href: "/test/theme",
+        },
+        {
+          name: "Auth",
+          href: "/test/auth",
+        },
+      ],
     },
-  ],
-  subnav: [
-    {
-      name: "Dashboard",
-      type: "link",
-      href: "/dashboard",
+    admin: {
+      name: "Admin",
+      role: "admin",
+      children: [
+        {
+          name: "Admin",
+          description: "Admin...",
+        },
+        {
+          name: "Users",
+          href: "/admin/users",
+        },
+        {
+          name: "Secret",
+          href: "/admin/secret",
+        },
+        {
+          name: "Test",
+          href: "/test/auth",
+        },
+      ],
     },
-    {
-      name: "Page X",
-      type: "link",
-      href: "/pagex",
+    login: {
+      name: "Sign In",
+      signIn: true,
+      children: [
+        {
+          name: "Frank Gutierrez",
+          description: "",
+        },
+        {
+          name: "Settings",
+          href: "/admin/users",
+        },
+        {
+          name: "Sign Out",
+          signOut: true,
+        },
+      ],
     },
-    {
-      name: "Page Y",
-      type: "link",
-      href: "/pagey",
-    },
-  ],
-  testnav: [
-    {
-      name: "Test Prettier",
-      type: "link",
-      href: "/test/prettier",
-    },
-    {
-      name: "Test UI",
-      type: "link",
-      href: "/test/ui",
-    },
-    {
-      name: "Test Theme",
-      type: "link",
-      href: "/test/theme",
-    },
-    {
-      name: "Test Auth",
-      type: "link",
-      href: "/test/auth",
-    },
-  ],
+  },
 };
