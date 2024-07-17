@@ -8,3 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export function json(data: any) {
   console.log(JSON.stringify(data, null, 2));
 }
+
+export function jsonString(data: any) {
+  return JSON.stringify(data, null, 2);
+}
