@@ -1,6 +1,7 @@
 import { Config } from "@/types";
 
 export const config: Config = {
+  baseUrl: "http://localhost:3000",
   company: {
     name: "ACME",
     description: "A friendly globally minded company",
@@ -60,10 +61,6 @@ export const config: Config = {
       hide: true,
       children: [
         {
-          name: "Test",
-          description: "Test...",
-        },
-        {
           name: "Prettier",
           href: "/test/prettier",
         },
@@ -87,7 +84,7 @@ export const config: Config = {
       children: [
         {
           name: "Admin",
-          description: "",
+          description: "You must be an admin user to utilize these services",
         },
         {
           name: "Users",

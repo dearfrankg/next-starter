@@ -1,5 +1,6 @@
 import { H2 } from "@/components/heading";
 import PageWithNav from "@/components/page-with-nav";
+import { RequiresAdmin } from "@/components/requires-admin";
 import TestSubMenu from "@/components/test/submenu";
 import getSession from "@/lib/session";
 
@@ -12,11 +13,13 @@ export default async function DashBoard() {
 
       <H2>Test Auth</H2>
 
-      <div className="mx-auto flex w-2/3 flex-col items-start gap-8 rounded-md">
-        <div className="mx-auto text-center text-lg">
-          next page using server session -- {session?.user?.name}
+      <RequiresAdmin>
+        <div className="mx-auto flex w-2/3 flex-col items-start gap-8 rounded-md">
+          <div className="mx-auto text-center text-lg">
+            next page using server session -- {session?.user?.name}
+          </div>
         </div>
-      </div>
+      </RequiresAdmin>
     </PageWithNav>
   );
 }

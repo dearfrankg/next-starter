@@ -1,19 +1,20 @@
 import AdminSubMenu from "@/components/admin/submenu";
 import { H2 } from "@/components/heading";
 import PageWithNav from "@/components/page-with-nav";
-import Users from "@/components/users";
-import prisma from "@/lib/prisma";
+import { RequiresAdmin } from "@/components/requires-admin";
+import { Users } from "@/components/users";
+import { SearchParamProps } from "@/types";
 
-export default async function Settings() {
-  const users = await prisma.user.findMany();
-
+export default async function UsersPage({ searchParams }: SearchParamProps) {
   return (
     <PageWithNav>
       <AdminSubMenu />
 
       <H2>Users</H2>
 
-      <Users users={users} />
+      <RequiresAdmin>
+        <Users searchParams={searchParams} />
+      </RequiresAdmin>
     </PageWithNav>
   );
 }

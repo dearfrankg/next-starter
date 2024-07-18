@@ -25,7 +25,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={theme?.value}>
-      <body className={cn(inter.className, "min-h-screen")}>
+      <body className={cn(inter.className, "relative min-h-screen")}>
         <Providers>
           <NavBar {...{ theme: theme?.value as Theme }} />
           {children}
