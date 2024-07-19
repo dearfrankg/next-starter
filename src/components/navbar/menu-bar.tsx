@@ -12,7 +12,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { config } from "@/config";
-import { cn } from "@/lib/utils";
+import { cn, json } from "@/lib/utils";
 import { NavItem, NavSectionProps } from "@/types";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
@@ -32,12 +32,19 @@ export function MenuBar(props: NavSectionProps) {
   return (
     <NavigationMenu className="z-10 hidden md:block">
       <NavigationMenuList>
-        {Object.keys(config.nav).map((navkey) => {
-          const obj = config.nav[navkey];
-          if (obj.hide) return null;
+        {config.nav.map((obj) => {
+          const menuRole = obj?.role;
+          const sessionRole = props.session?.data?.user?.role;
+          const hasNonMatchingRoles =
+            (!!menuRole && !sessionRole) ||
+            (!!menuRole && !!sessionRole && menuRole !== sessionRole);
+
+          const isHidden = !!obj.hide || hasNonMatchingRoles;
+
+          if (isHidden) return null;
 
           return (
-            <NavMenuItem key={navkey} navItem={obj} session={props.session} />
+            <NavMenuItem key={obj.name} navItem={obj} session={props.session} />
           );
         })}
       </NavigationMenuList>

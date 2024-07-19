@@ -7,12 +7,13 @@ export const config: Config = {
     description: "A friendly globally minded company",
     logo: "/acme.svg",
   },
-  nav: {
-    home: {
+  signIn: { redirectUrl: "/dashboard" },
+  nav: [
+    {
       name: "Home",
       href: "/",
     },
-    learning: {
+    {
       name: "Products",
       children: [
         {
@@ -37,7 +38,7 @@ export const config: Config = {
         },
       ],
     },
-    company: {
+    {
       name: "Company",
       children: [
         {
@@ -56,7 +57,7 @@ export const config: Config = {
         },
       ],
     },
-    test: {
+    {
       name: "Test",
       hide: true,
       children: [
@@ -78,7 +79,7 @@ export const config: Config = {
         },
       ],
     },
-    admin: {
+    {
       name: "Admin",
       role: "admin",
       children: [
@@ -103,7 +104,7 @@ export const config: Config = {
         },
       ],
     },
-    login: {
+    {
       name: "Sign In",
       signIn: true,
       children: [
@@ -123,5 +124,5 @@ export const config: Config = {
         },
       ],
     },
-  },
+  ],
 };

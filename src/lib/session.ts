@@ -1,14 +1,13 @@
 import { auth } from "@/auth";
+import { config } from "@/config";
 import { redirect } from "next/navigation";
 import { cache } from "react";
 
-// export default cache(auth);
-
-export default async function getSession(target?: string) {
+export default async function getSession(useRedirect = true) {
   const session = await cache(auth)();
 
-  if (session === null && target) {
-    const encodedTarget = target ? encodeURI(target) : encodeURI("/dashboard");
+  if (session === null && useRedirect) {
+    const encodedTarget = encodeURI(config.signIn.redirectUrl);
     redirect(`/api/auth/signin?callbackUrl=${encodedTarget}`);
   }
 

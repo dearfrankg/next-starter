@@ -27,9 +27,8 @@ export interface Config {
     description: string;
     logo: string;
   };
-  nav: {
-    [key: string]: NavItem;
-  };
+  signIn: { redirectUrl: string };
+  nav: NavItem[];
 }
 
 export interface NavSectionProps {
