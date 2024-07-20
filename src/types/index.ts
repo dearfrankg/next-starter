@@ -1,8 +1,5 @@
-import Prisma from "@prisma/client";
-import { User } from "next-auth";
 import { SessionContextValue } from "next-auth/react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { z } from "zod";
 
 export enum Theme {
   dark = "dark",
