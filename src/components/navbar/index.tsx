@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "../ui/button";
 import { DrawerMenu } from "./drawer-menu";
 import { MenuBar } from "./menu-bar";
 import { AcmeLogo } from "@/assets/acme-logo";
@@ -7,7 +8,7 @@ import ThemeSwitcher from "@/components/theme-switcher";
 import { config } from "@/config";
 import { NavSectionProps, Theme } from "@/types";
 import { useSession } from "next-auth/react";
-import dynamic from "next/dynamic";
+import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -66,9 +67,17 @@ function Center(props: NavSectionProps) {
 }
 
 function Right(props: NavSectionProps) {
+  const isNotAuth = props.session?.status === "unauthenticated";
+
   return (
     <div className="flex items-center gap-8">
       <MenuBar {...props} />
+
+      {isNotAuth && (
+        <div className="md:hidden">
+          <Button onClick={() => signIn()}>Sign in</Button>
+        </div>
+      )}
 
       <ThemeSwitcher theme={props.theme} />
     </div>
