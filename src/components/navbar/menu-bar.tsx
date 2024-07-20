@@ -30,7 +30,7 @@ export function MenuBar(props: NavSectionProps) {
   }
 
   return (
-    <NavigationMenu className="z-10 hidden md:block">
+    <NavigationMenu className="hidden md:block">
       <NavigationMenuList>
         {config.nav.map((obj) => {
           const menuRole = obj?.role;
@@ -91,7 +91,7 @@ export function NavMenuItem({
 
   if (hasSignIn) {
     return (
-      <NavigationMenuItem className="cursor-pointer rounded-md border-none py-[6px] hover:bg-accent">
+      <NavigationMenuItem>
         {!isAuth && (
           <Button className="ml-4" onClick={() => signIn()}>
             Sign in
@@ -99,29 +99,29 @@ export function NavMenuItem({
         )}
 
         {isAuth && (
-          <>
-            <NavigationMenuTrigger>
+          <NavigationMenuTrigger>
+            <span>
               <UserAvatar user={user} />
-            </NavigationMenuTrigger>
-
-            <NavigationMenuContent className="list-none">
-              <div className="flex gap-8 bg-inherit">
-                <div className="w-[160px]"></div>
-                <div className="">
-                  <ul className="w-[350px] border bg-background">
-                    {navItem.children?.map((subItem) => (
-                      <NavMenuItem
-                        key={subItem.name}
-                        navItem={subItem}
-                        session={session}
-                      />
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </NavigationMenuContent>
-          </>
+            </span>
+          </NavigationMenuTrigger>
         )}
+
+        <NavigationMenuContent className="list-none">
+          <div className="flex gap-8 bg-inherit">
+            <div className="w-[160px]"></div>
+            <div className="">
+              <ul className="w-[350px] border bg-background">
+                {navItem.children?.map((subItem) => (
+                  <NavMenuItem
+                    key={subItem.name}
+                    navItem={subItem}
+                    session={session}
+                  />
+                ))}
+              </ul>
+            </div>
+          </div>
+        </NavigationMenuContent>
       </NavigationMenuItem>
     );
   }
@@ -132,6 +132,7 @@ export function NavMenuItem({
         <NavigationMenuTrigger>
           <span className="text-lg">{navItem.name}</span>
         </NavigationMenuTrigger>
+
         <NavigationMenuContent className="list-none">
           <ul className="border bg-background">
             {navItem.children?.map((subItem) => (
@@ -214,8 +215,8 @@ interface UserAvatarProps {
 
 function UserAvatar({ user }: UserAvatarProps) {
   return (
-    <div className="rounded-full border-2 border-slate-400 p-[1px]">
-      <Avatar>
+    <div className="relative w-8 rounded-full">
+      <Avatar className="absolute top-[-16px]">
         <AvatarImage src={user.image} alt={`pic of ${user.name}`} />
         <AvatarFallback>
           <AvatarImage src={"/avatar_placeholder.png"} alt="placeholder pic" />

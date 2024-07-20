@@ -14,6 +14,25 @@ export const config: Config = {
       href: "/",
     },
     {
+      name: "Company",
+      children: [
+        {
+          name: "Company",
+          description: "Our product soaks up the sun, and then it's toasted",
+        },
+        {
+          name: "About Us",
+          href: "/about",
+          description: "",
+        },
+        {
+          name: "Merch",
+          href: "/merch",
+          description: "",
+        },
+      ],
+    },
+    {
       name: "Products",
       children: [
         {
@@ -35,25 +54,6 @@ export const config: Config = {
           name: "Product Y",
           href: "/producty",
           description: "Product Y is our best seller",
-        },
-      ],
-    },
-    {
-      name: "Company",
-      children: [
-        {
-          name: "Company",
-          description: "Our product soaks up the sun, and then it's toasted",
-        },
-        {
-          name: "About Us",
-          href: "/about",
-          description: "",
-        },
-        {
-          name: "Merch",
-          href: "/merch",
-          description: "",
         },
       ],
     },
