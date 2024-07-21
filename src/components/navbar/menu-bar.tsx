@@ -12,7 +12,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { config } from "@/config";
-import { cn, json } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { NavItem, NavSectionProps } from "@/types";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";

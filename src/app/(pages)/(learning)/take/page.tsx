@@ -8,9 +8,9 @@ export default async function DashBoard() {
 
   return (
     <PageWithNav>
-      <SubMenu title="Products" />
+      <SubMenu title="Learning" />
 
-      <H2>Product Y</H2>
+      <H2>Take Tests</H2>
     </PageWithNav>
   );
 }

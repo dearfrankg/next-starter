@@ -8,7 +8,7 @@ export default async function DashBoard() {
 
   return (
     <PageWithNav>
-      <SubMenu title="Products" />
+      <SubMenu title="Learning" />
 
       <H2>Dashboard</H2>
     </PageWithNav>

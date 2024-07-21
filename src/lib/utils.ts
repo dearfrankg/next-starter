@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function json(data: any) {
+export function consoleJSON(data: any) {
   console.log(JSON.stringify(data, null, 2));
 }
 

@@ -3,8 +3,8 @@ import { Config } from "@/types";
 export const config: Config = {
   baseUrl: "http://localhost:3000",
   company: {
-    name: "ACME",
-    description: "A friendly globally minded company",
+    name: "ASSIMILATE",
+    description: "An advanced study tool for learning",
     logo: "/acme.svg",
   },
   signIn: { redirectUrl: "/dashboard" },
@@ -18,7 +18,7 @@ export const config: Config = {
       children: [
         {
           name: "Company",
-          description: "Our product soaks up the sun, and then it's toasted",
+          description: "We make learning more effective",
         },
         {
           name: "About Us",
@@ -33,27 +33,31 @@ export const config: Config = {
       ],
     },
     {
-      name: "Products",
+      name: "Learning",
       children: [
         {
-          name: "Products",
-          description:
-            "Check out our unique collection of high quality products.",
+          name: "Learning",
+          description: "Learn and comprehend more using the Bradich technique",
         },
         {
           name: "Dashboard",
           href: "/dashboard",
-          description: "See our best sellers on the dashboard",
+          description: "See your progress over time",
         },
         {
-          name: "Product X",
-          href: "/productx",
-          description: "Product X is the best in its class",
+          name: "Generate Test",
+          href: "/generate",
+          description: "Generate a test for any topic",
         },
         {
-          name: "Product Y",
-          href: "/producty",
-          description: "Product Y is our best seller",
+          name: "Study",
+          href: "/study",
+          description: "Study up before the test",
+        },
+        {
+          name: "Take Test",
+          href: "/take",
+          description: "Take the test to record your progress",
         },
       ],
     },

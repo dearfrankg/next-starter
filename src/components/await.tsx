@@ -1,5 +1,3 @@
-import { json } from "@/lib/utils";
-
 export default async function Await<T>({
   promise,
   children,
