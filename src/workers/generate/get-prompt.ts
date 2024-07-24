@@ -1,0 +1,41 @@
+import { GenerateTestProps } from ".";
+
+export function getPrompt({ topic, questionCount }: GenerateTestProps) {
+  return `
+
+Please generate a test without interuption in one go.
+
+Leverage these typescript types:
+
+export interface Choice {
+  a: string;
+  b: string;
+  c: string;
+  d: string;
+}
+
+export interface Question {
+  questionNumber: number;
+  question: string;
+  subTopic; string;
+  choices: Choice;
+  answer: keyof Choice[];
+  explanation: string;
+  example?: string;
+}
+
+provide result in JSON format.
+
+Using the type Question[], generate ${questionCount} random questions about the topic: ${topic}
+
+for the explanation property: provide a full paragraph.
+
+for the example property: only populate this field if a programming example is appropriate
+
+for the example property: It should be in markdown format
+
+
+
+
+`;
+}

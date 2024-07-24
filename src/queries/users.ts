@@ -1,5 +1,4 @@
 import prisma from "@/lib/prisma";
-import { json } from "@/lib/utils";
 import { ParamProps, SearchParamProps } from "@/types";
 
 /*
