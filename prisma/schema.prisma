@@ -25,8 +25,10 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  Test         Test[]
+  TestAttempts TestAttempt[]
 
   @@map("users")
 }
@@ -75,9 +77,15 @@ model VerificationToken {
 }
 
 model Test {
-  id        String     @id @default(cuid())
-  name      String
-  questions Question[]
+  id          String     @id @default(cuid())
+  name        String
+  description String
+  questions   Question[]
+
+  userId  String
+  creator User   @relation(fields: [userId], references: [id])
+
+  TestAttempt TestAttempt[]
 
   @@map("test")
 }
@@ -104,3 +112,41 @@ model Choice {
 
   @@map("choice")
 }
+
+model TestAttempt {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  testId String
+  test   Test   @relation(fields: [testId], references: [id], onDelete: Cascade)
+
+  startedAt  DateTime     @default(now())
+  finishedAt DateTime?
+  score      Float?
+  answers    TestAnswer[]
+
+  @@map("test_attempts")
+}
+
+model TestAnswer {
+  id         String @id @default(cuid())
+  questionId String
+  choiceId   String
+
+  testAttemptId String
+  testAttempt   TestAttempt @relation(fields: [testAttemptId], references: [id], onDelete: Cascade)
+
+  @@map("test_answers")
+}
+
+// ERD
+//
+// [User] 1 --- * [Test]
+// [Test] 1 --- * [Question]
+// [Question] 1 --- * [Choice]
+//
+// [User] 1 --- * [TestAttempt]
+// [Test] 1 --- * [TestAttempt]
+//
+// [TestAttempt] 1 --- * [TestAnswer]
+//
