@@ -17,7 +17,7 @@ export default function SubMenu({ title }: SubMenuProps) {
   return (
     <div className="flex items-center gap-8">
       <h1 className="text-lg font-bold">{title}</h1>
-      <div className="inline-block bg-card p-4">
+      <div className="inline-block p-4">
         <div className="flex flex-wrap items-center gap-8">
           {menu?.children
             .filter((item) => !!item.href)

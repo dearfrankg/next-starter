@@ -1,4 +1,4 @@
-export default async function Await<T>({
+export async function Await<T>({
   promise,
   children,
 }: {

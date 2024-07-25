@@ -1,8 +1,8 @@
 import { H2 } from "@/components/heading";
 import PageWithNav from "@/components/page-with-nav";
+import ShadButtons from "@/components/pages/test/shad-buttons";
 import { RequiresAdmin } from "@/components/requires-admin";
 import SubMenu from "@/components/submenu";
-import ShadButtons from "@/components/test/shad-buttons";
 
 export default async function TestTheme() {
   return (

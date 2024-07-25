@@ -1,9 +1,9 @@
-import Await from "../await";
 import { Controls } from "./controls";
 import { SkeletonControl } from "./skel-control";
 import { SkeletonUser } from "./skel-user";
 import SkeletonUserList from "./skel-user-list";
 import UserList from "./user-list";
+import { Await } from "@/components/await";
 import {
   Card,
   CardContent,

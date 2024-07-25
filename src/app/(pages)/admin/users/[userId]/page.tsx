@@ -1,6 +1,8 @@
-import Await from "@/components/await";
+import { Await } from "@/components/await";
 import { H2 } from "@/components/heading";
 import PageWithNav from "@/components/page-with-nav";
+import { SkeletonUser } from "@/components/pages/admin/users/skel-user";
+import { UserComponent } from "@/components/pages/admin/users/user";
 import { RequiresAdmin } from "@/components/requires-admin";
 import SubMenu from "@/components/submenu";
 import {
@@ -11,8 +13,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { SkeletonUser } from "@/components/users/skel-user";
-import { UserComponent } from "@/components/users/user";
 import { getUser } from "@/queries/users";
 import { ParamProps } from "@/types";
 import { User } from "@prisma/client";

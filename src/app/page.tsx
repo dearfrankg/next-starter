@@ -1,10 +1,10 @@
-import { H2 } from "@/components/heading";
 import PageWithNav from "@/components/page-with-nav";
+import Landing from "@/components/pages/(_home)/landing";
 
 export default async function Home() {
   return (
     <PageWithNav>
-      <H2 className="pt-8">Home Page</H2>
+      <Landing />
     </PageWithNav>
   );
 }

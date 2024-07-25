@@ -1,4 +1,4 @@
-import { H2 } from "../heading";
+import { H2 } from "@/components/heading";
 import { Button } from "@/components/ui/button";
 import {
   ChevronRightIcon,
