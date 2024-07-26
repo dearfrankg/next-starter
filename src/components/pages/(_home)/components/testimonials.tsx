@@ -1,10 +1,10 @@
 export function Testimonials() {
   return (
-    <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-      <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 md:gap-20 md:grid-cols-3 lg:grid-cols-5 lg:gap-8">
+    <div className="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-3 md:gap-20 lg:grid-cols-5 lg:gap-8">
         <div className="text-center">
           <svg
-            className="w-auto h-8 mx-auto text-gray-800 dark:text-neutral-200"
+            className="mx-auto h-8 w-auto text-gray-800 dark:text-neutral-200"
             width="227"
             height="88"
             viewBox="0 0 227 88"
@@ -19,11 +19,11 @@ export function Testimonials() {
 
           <div className="mt-2 sm:mt-6">
             <p className="text-gray-800 dark:text-neutral-200">
-              " Truly great product and costumer support. "
+              &quot; Truly great product and costumer support. &quot;
             </p>
           </div>
 
-          <div className="flex-shrink-0 flex justify-center space-x-1 mt-3">
+          <div className="mt-3 flex flex-shrink-0 justify-center space-x-1">
             <svg
               className="size-4 text-blue-500"
               width="51"
@@ -94,7 +94,7 @@ export function Testimonials() {
 
         <div className="text-center">
           <svg
-            className="w-auto h-8 mx-auto text-gray-800 dark:text-neutral-200"
+            className="mx-auto h-8 w-auto text-gray-800 dark:text-neutral-200"
             width="100"
             height="33"
             viewBox="0 0 100 33"
@@ -109,11 +109,11 @@ export function Testimonials() {
 
           <div className="mt-2 sm:mt-6">
             <p className="text-gray-800 dark:text-neutral-200">
-              " The best study tool I've ever come across. "
+              &quot; The best study tool I&apos;ve ever come across. &quot;
             </p>
           </div>
 
-          <div className="flex-shrink-0 flex justify-center space-x-1 mt-3">
+          <div className="mt-3 flex flex-shrink-0 justify-center space-x-1">
             <svg
               className="size-4 text-blue-500"
               width="51"
@@ -188,7 +188,7 @@ export function Testimonials() {
 
         <div className="text-center">
           <svg
-            className="w-auto h-8 mx-auto text-gray-800 dark:text-neutral-200"
+            className="mx-auto h-8 w-auto text-gray-800 dark:text-neutral-200"
             width="106"
             height="36"
             viewBox="0 0 106 36"
@@ -203,11 +203,11 @@ export function Testimonials() {
 
           <div className="mt-2 sm:mt-6">
             <p className="text-gray-800 dark:text-neutral-200">
-              " This is a truly beautiful product. "
+              &quot; This is a truly beautiful product. &quot;
             </p>
           </div>
 
-          <div className="flex-shrink-0 flex justify-center space-x-1 mt-3">
+          <div className="mt-3 flex flex-shrink-0 justify-center space-x-1">
             <svg
               className="size-4 text-blue-500"
               width="51"
@@ -278,7 +278,7 @@ export function Testimonials() {
 
         <div className="text-center">
           <svg
-            className="w-auto h-8 mx-auto text-gray-800 dark:text-neutral-200"
+            className="mx-auto h-8 w-auto text-gray-800 dark:text-neutral-200"
             width="140"
             height="47"
             viewBox="0 0 140 47"
@@ -302,7 +302,10 @@ export function Testimonials() {
                 d="M80.9681 17.582C78.8723 17.582 76.7066 18.5601 75.7286 20.2367V17.8615H72.7944V40.2168H75.7286V30.7158C76.7066 32.4623 78.8723 33.3006 80.9681 33.3006C85.0898 33.3006 88.513 30.2966 88.513 25.4762C88.513 20.7257 85.0898 17.582 80.9681 17.582ZM80.6886 30.576C78.2435 30.576 75.6587 28.8295 75.6587 25.616C75.6587 22.4024 78.1737 20.3066 80.8284 20.3066C83.5529 20.3066 85.7186 22.3325 85.7186 25.3365C85.6487 28.4104 83.3433 30.576 80.6886 30.576Z"
                 fill="currentColor"
               />
-              <path d="M122.605 9.68799H119.67V32.9515H122.605V9.68799Z" fill="currentColor" />
+              <path
+                d="M122.605 9.68799H119.67V32.9515H122.605V9.68799Z"
+                fill="currentColor"
+              />
               <path
                 d="M64.4113 17.4424C64.3414 17.4424 64.2716 17.4424 64.2017 17.4424C64.2017 17.4424 61.6867 17.4424 59.3115 18.4204L59.5909 19.1889L60.1498 20.7957C60.9881 20.4464 62.3853 20.0272 64.2017 19.9574C64.2716 19.9574 64.3414 19.9574 64.4113 19.9574C67.6249 19.9574 67.6947 22.8915 67.6947 22.8915V23.6599L62.6648 23.5901C62.3155 23.5901 60.2895 23.5901 58.8225 24.9873C58.4732 25.3366 58.1937 25.6859 57.9841 26.1051C57.7047 26.7338 57.4951 27.4324 57.4951 28.2009C57.4951 29.1789 57.7746 30.0871 58.1937 30.8556C58.4033 31.2049 58.6827 31.5542 58.9622 31.8336C59.9402 32.7418 61.3374 33.3007 62.8744 33.3007C63.0141 33.3007 63.1538 33.3007 63.2237 33.3007C64.9702 33.2308 66.577 32.5322 67.6249 30.8556V32.9514H70.2097V23.4504C70.2796 21.0053 68.7426 17.4424 64.4113 17.4424ZM63.1538 30.9254C62.2456 30.9953 60.1498 30.5063 60.1498 28.2009C60.1498 27.5721 60.7087 26.1051 62.5251 26.1051C64.3414 26.1051 67.555 26.1051 67.555 26.1051C67.6249 28.8995 65.9482 30.7857 63.1538 30.9254Z"
                 fill="currentColor"
@@ -378,11 +381,11 @@ export function Testimonials() {
 
           <div className="mt-2 sm:mt-6">
             <p className="text-gray-800 dark:text-neutral-200">
-              " This is one product that you can't do without. "
+              &quot; This is one product that you can&apos;t do without. &quot;
             </p>
           </div>
 
-          <div className="flex-shrink-0 flex justify-center space-x-1 mt-3">
+          <div className="mt-3 flex flex-shrink-0 justify-center space-x-1">
             <svg
               className="size-4 text-blue-500"
               width="51"
@@ -453,7 +456,7 @@ export function Testimonials() {
 
         <div className="text-center">
           <svg
-            className="w-auto h-8 mx-auto text-gray-800 dark:text-neutral-200"
+            className="mx-auto h-8 w-auto text-gray-800 dark:text-neutral-200"
             width="140"
             height="47"
             viewBox="0 0 140 47"
@@ -508,11 +511,11 @@ export function Testimonials() {
 
           <div className="mt-2 sm:mt-6">
             <p className="text-gray-800 dark:text-neutral-200">
-              " Great design and thorough documentation. "
+              &quot; Great design and thorough documentation. &quot;
             </p>
           </div>
 
-          <div className="flex-shrink-0 flex justify-center space-x-1 mt-3">
+          <div className="mt-3 flex flex-shrink-0 justify-center space-x-1">
             <svg
               className="size-4 text-blue-500"
               width="51"

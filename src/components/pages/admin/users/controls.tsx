@@ -1,8 +1,6 @@
-import { Button } from "../ui/button";
 import Search from "./search";
 import { cn } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
-import { User } from "@prisma/client";
 import Link from "next/link";
 
 interface ControlProps {

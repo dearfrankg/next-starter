@@ -1,5 +1,3 @@
-import { Badge } from "../ui/badge";
-
 export function SkeletonUser() {
   return (
     <div className="flex animate-pulse items-center justify-between gap-4">
