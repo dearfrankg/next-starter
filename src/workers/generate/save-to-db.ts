@@ -1,13 +1,14 @@
+import { GenerateTestProps } from ".";
 import prisma from "@/lib/prisma";
 import { TestQuestion } from "@/types/questions";
 import { Prisma } from "@prisma/client";
 
 interface SaveTestToDBProps {
-  testName: string;
+  props: GenerateTestProps;
   questions: TestQuestion[];
 }
 
-export async function saveTestToDB({ testName, questions }: SaveTestToDBProps) {
+export async function saveTestToDB({ props, questions }: SaveTestToDBProps) {
   try {
     const result = await prisma.$transaction(
       async (tx) => {
@@ -16,7 +17,11 @@ export async function saveTestToDB({ testName, questions }: SaveTestToDBProps) {
 
         // Create a new test
         const test = await tx.test.create({
-          data: { name: testName },
+          data: {
+            userId: "clz1umgy60000nfcpx8b3a4rp", // dearfrankg
+            topic: props.topic,
+            description: props.description,
+          },
         });
 
         // Create questions

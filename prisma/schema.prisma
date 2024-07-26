@@ -77,17 +77,17 @@ model VerificationToken {
 }
 
 model Test {
-  id          String     @id @default(cuid())
-  name        String
+  id          String @id @default(cuid())
+  topic       String
   description String
-  questions   Question[]
 
   userId  String
   creator User   @relation(fields: [userId], references: [id])
 
-  TestAttempt TestAttempt[]
+  questions    Question[]
+  testAttempts TestAttempt[]
 
-  @@map("test")
+  @@map("tests")
 }
 
 model Question {
@@ -100,7 +100,7 @@ model Question {
   example     String   @db.Text
   choices     Choice[]
 
-  @@map("question")
+  @@map("questions")
 }
 
 model Choice {
@@ -110,7 +110,7 @@ model Choice {
   content    String
   isCorrect  Boolean  @default(false)
 
-  @@map("choice")
+  @@map("choices")
 }
 
 model TestAttempt {
@@ -120,23 +120,21 @@ model TestAttempt {
   testId String
   test   Test   @relation(fields: [testId], references: [id], onDelete: Cascade)
 
-  startedAt  DateTime     @default(now())
+  startedAt  DateTime  @default(now())
   finishedAt DateTime?
-  score      Float?
-  answers    TestAnswer[]
+
+  totalCount      Int
+  answersCount    Int
+  unansweredCount Int
+
+  correctCount   Int
+  incorrectCount Int
+  percentage     Decimal @db.Decimal(5, 2)
+
+  answers          Json
+  incorrectAnswers Json
 
   @@map("test_attempts")
-}
-
-model TestAnswer {
-  id         String @id @default(cuid())
-  questionId String
-  choiceId   String
-
-  testAttemptId String
-  testAttempt   TestAttempt @relation(fields: [testAttemptId], references: [id], onDelete: Cascade)
-
-  @@map("test_answers")
 }
 
 // ERD
@@ -147,6 +145,4 @@ model TestAnswer {
 //
 // [User] 1 --- * [TestAttempt]
 // [Test] 1 --- * [TestAttempt]
-//
-// [TestAttempt] 1 --- * [TestAnswer]
 //
