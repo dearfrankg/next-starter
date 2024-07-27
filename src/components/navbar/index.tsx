@@ -28,7 +28,7 @@ export default function NavBar({ theme }: NavBarProps) {
   };
 
   return (
-    <div className="fixed w-full pt-4" style={{ zIndex: 9999 }}>
+    <div className="fixed w-full bg-card pt-4" style={{ zIndex: 9999 }}>
       <div className="mx-auto h-[50px] max-w-7xl border-b px-4 sm:px-8">
         <div className="flex h-[36px] w-full items-center justify-between gap-8">
           <div className="flex flex-grow items-center justify-start self-stretch">

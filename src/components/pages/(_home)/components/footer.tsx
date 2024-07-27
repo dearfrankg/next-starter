@@ -1,7 +1,7 @@
 export function Footer() {
   return (
-    <footer className="mt-auto w-full">
-      <div className="mx-auto mt-auto w-full max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-20">
+    <footer className="w-full">
+      <div className="mx-auto w-full max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8">
         {/* <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
           <div className="col-span-full lg:col-span-3">
             <a
@@ -84,14 +84,13 @@ export function Footer() {
           </div>
         </div> */}
 
-        <div className="mt-5 grid gap-y-2 sm:mt-12 sm:flex sm:items-center sm:justify-between sm:gap-y-0">
-          <div className="flex items-center justify-between">
-            <p className="text-sm text-foreground">
-              © 2024 All Rights Reserved.
-            </p>
-          </div>
+        <div className="flex items-center justify-between pt-20">
+          <p className="text-sm text-foreground">
+            © 2024 All Rights Reserved.
+          </p>
+        </div>
 
-          {/* <div>
+        {/* <div>
             <a
               className="inline-flex size-10 items-center justify-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-foreground hover:bg-white/10 focus:outline-none focus:ring-1 focus:ring-gray-600 disabled:pointer-events-none disabled:opacity-50"
               href="#"
@@ -168,7 +167,6 @@ export function Footer() {
               </svg>
             </a>
           </div> */}
-        </div>
       </div>
     </footer>
   );
