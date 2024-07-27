@@ -3,8 +3,8 @@ import { generateTest } from "./generate";
 async function main() {
   try {
     await generateTest({
-      topic: "react and typescript",
-      description: "A simple test about react and typescript",
+      topic: "Beginner AI",
+      description: "Test on the basics of AI",
       questionCount: 80,
     });
   } catch (error) {

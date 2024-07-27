@@ -19,3 +19,11 @@ export function timeAgo(date: Date) {
     addSuffix: true,
   });
 }
+
+export function printError(e: unknown) {
+  if (e instanceof Error) {
+    console.log("e: ", e.message);
+  } else {
+    console.log("An unknown error occurred");
+  }
+}

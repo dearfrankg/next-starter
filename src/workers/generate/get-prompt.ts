@@ -1,6 +1,10 @@
 import { GenerateTestProps } from ".";
 
-export function getPrompt({ topic, questionCount }: GenerateTestProps) {
+export function getPrompt({
+  topic,
+  description,
+  questionCount,
+}: GenerateTestProps) {
   return `
 
 Please generate a test without interuption in one go.
@@ -26,13 +30,22 @@ export interface Question {
 
 provide result in JSON format.
 
-Using the type Question[], generate ${questionCount} random questions about the topic: ${topic}
+Using the type Question[], generate ${questionCount} random questions
 
-for the explanation property: provide a full paragraph.
+Questions should be based on the following topic and description
 
-for the example property: only populate this field if a programming example is appropriate
+  topic: ${topic}
+  description: ${description}
 
-for the example property: It should be in markdown format
+Explanation property:
+
+  provide a full paragraph.
+
+Example property:
+
+  only populate this field if a programming example is appropriate
+  It should be in markdown format
+
 
 
 

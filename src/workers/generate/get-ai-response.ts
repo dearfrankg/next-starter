@@ -1,7 +1,7 @@
 import { GenerateTestProps } from ".";
 import { writeVariableToFile } from "../../lib/file";
 import { getPrompt } from "./get-prompt";
-import { jsonString } from "@/lib/utils";
+import { jsonString, printError } from "@/lib/utils";
 import { TestQuestion } from "@/types/questions";
 import cuid from "cuid";
 import OpenAI from "openai";
@@ -22,23 +22,29 @@ export async function generateAITest(props: GenerateTestProps) {
 }
 
 async function getAIResponse(props: GenerateTestProps): Promise<string> {
-  const completion = await openai.chat.completions.create({
-    messages: [
-      { role: "system", content: "You are a helpful assistant." },
-      { role: "user", content: getPrompt(props) },
-    ],
-    model: "gpt-4o-mini-2024-07-18",
-    max_tokens: 16000,
-    response_format: { type: "json_object" },
-  });
+  let textResponse;
 
-  const textResponse = completion.choices[0].message.content || "";
+  try {
+    const completion = await openai.chat.completions.create({
+      messages: [
+        { role: "system", content: "You are a helpful assistant." },
+        { role: "user", content: getPrompt(props) },
+      ],
+      model: "gpt-4o-mini-2024-07-18",
+      max_tokens: 16000,
+      response_format: { type: "json_object" },
+    });
 
-  if (textResponse.length === 0) {
-    throw new Error("Generation error");
+    textResponse = completion.choices[0].message.content || "";
+
+    if (textResponse.length === 0) {
+      throw new Error("AI system has no response");
+    }
+  } catch (e: unknown) {
+    printError(e);
   }
 
-  return textResponse;
+  return textResponse || "";
 }
 
 async function getParsedResponse(
@@ -50,11 +56,15 @@ async function getParsedResponse(
   try {
     const parseResponse = await JSON.parse(textResponse);
 
-    const filePath = join(normalize("src/workers/data"), `test-${cuid()}.json`);
+    const filePath = join(normalize("prisma/data"), `test-${cuid()}.json`);
 
     writeVariableToFile(
       filePath,
-      jsonString({ name: props.topic, ...parseResponse }),
+      jsonString({
+        topic: props.topic,
+        description: props.description,
+        ...parseResponse,
+      }),
     );
 
     questions = parseResponse.questions;
