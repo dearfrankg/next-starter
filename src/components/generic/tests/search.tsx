@@ -1,0 +1,50 @@
+"use client";
+
+import { Input } from "@/components/ui/input";
+import { createNewSearchParams } from "@/lib/client";
+import { SearchParamProps } from "@/types";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { GoSearch } from "react-icons/go";
+import { useDebounce } from "use-debounce";
+
+const Search = ({ searchParams }: SearchParamProps) => {
+  const { query } = searchParams;
+  const pathname = usePathname();
+  const router = useRouter();
+  const initialRender = useRef(true);
+
+  const [text, setText] = useState(query);
+  const [search] = useDebounce(text, 750);
+
+  useEffect(() => {
+    if (initialRender.current) {
+      initialRender.current = false;
+      return;
+    }
+
+    const newSearchParams = createNewSearchParams({
+      searchParams,
+      name: "query",
+      value: search || "",
+    });
+
+    router.push(`${pathname}?${newSearchParams}`);
+  }, [search, router, pathname, searchParams]);
+
+  return (
+    <div className="relative flex-auto rounded-md shadow-sm">
+      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+        <GoSearch className="h-5 w-5 text-gray-400" aria-hidden="true" />
+      </div>
+      <Input
+        value={text}
+        placeholder="Search tests..."
+        onChange={(e) => setText(e.target.value)}
+        className="py-1.5 pl-10"
+      />
+    </div>
+  );
+};
+
+export default Search;
