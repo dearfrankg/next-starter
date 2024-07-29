@@ -22,8 +22,8 @@ export function timeAgo(date: Date) {
 
 export function printError(e: unknown) {
   if (e instanceof Error) {
-    console.log("e: ", e.message);
+    console.error("e: ", e.message);
   } else {
-    console.log("An unknown error occurred");
+    console.error("An unknown error occurred");
   }
 }
