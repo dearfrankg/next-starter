@@ -1,12 +1,13 @@
 import { H2 } from "@/components/heading";
 import PageWithNav from "@/components/page-with-nav";
+import { Dashboard } from "@/components/pages/(learning)/dashboard";
 import SubMenu from "@/components/submenu";
 import getSession from "@/lib/session";
-import { getTest } from "@/queries/questions";
+import { SearchParamProps } from "@/types";
 
-export default async function DashBoard() {
+export default async function DashBoard({ searchParams }: SearchParamProps) {
   const session = await getSession();
-  const data = await getTest({ userId: session?.user?.id as string });
+  const userId = session?.user?.id as string;
 
   return (
     <PageWithNav>
@@ -14,7 +15,7 @@ export default async function DashBoard() {
 
       <H2>Dashboard</H2>
 
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <Dashboard {...{ userId, searchParams }} />
     </PageWithNav>
   );
 }
