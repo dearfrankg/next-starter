@@ -41,3 +41,8 @@ export interface SearchParamProps {
 export interface ParamProps {
   params: { [key: string]: string }; // | string[] | undefined
 }
+
+export interface PageProps {
+  params: { [key: string]: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
