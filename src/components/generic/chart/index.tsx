@@ -13,10 +13,17 @@ import { SearchParamProps } from "@/types";
 import { TestAttemptTableItem, TestWithCreator } from "@/types/prisma";
 import React, { Suspense } from "react";
 
+interface ChartProps {
+  title: string;
+  userId: string;
+}
 export const Chart = async ({
+  title,
   userId,
   searchParams,
-}: { userId: string } & SearchParamProps) => {
+}: ChartProps & SearchParamProps) => {
+  //
+
   const promise: Promise<TestAttemptTableItem[]> = getLastestTestAttempts({
     userId,
     searchParams,
@@ -27,7 +34,7 @@ export const Chart = async ({
       className={"mx-auto h-[628px] space-y-10 border-none p-6 shadow-none"}
     >
       <CardHeader className="p-0">
-        <CardTitle>Chart of the latest test attempts</CardTitle>
+        <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent className="p-0">
         <div className="flex flex-col gap-8">

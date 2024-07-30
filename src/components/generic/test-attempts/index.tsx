@@ -13,16 +13,24 @@ import { getLastestTestAttempts } from "@/queries/test-attempts";
 import { SearchParamProps } from "@/types";
 import React, { Suspense } from "react";
 
+interface TestAttemptsProps {
+  title: string;
+  userId: string;
+}
+
 export const TestAttempts = async ({
+  title,
   userId,
   searchParams,
-}: { userId: string } & SearchParamProps) => {
+}: TestAttemptsProps & SearchParamProps) => {
+  //
+
   const promise = getLastestTestAttempts({ userId, searchParams });
 
   return (
     <Card className={"mx-auto space-y-10 border-none p-6 shadow-none"}>
       <CardHeader className="p-0">
-        <CardTitle>Latest Tests Attempts</CardTitle>
+        <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent className="p-0">
         <div className="flex flex-col gap-8">

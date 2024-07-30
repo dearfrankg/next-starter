@@ -45,9 +45,9 @@ export const config: Config = {
           description: "See your progress over time",
         },
         {
-          name: "Generate Test",
+          name: "AI Test Generator",
           href: "/generate",
-          description: "Generate a test for any topic",
+          description: "Have the AI generate a test on any topic",
         },
         {
           name: "Study",

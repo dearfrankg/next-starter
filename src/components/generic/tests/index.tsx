@@ -11,23 +11,29 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getPagedTests } from "@/queries/tests";
 import { SearchParamProps } from "@/types";
 import { TestWithCreator } from "@/types/prisma";
+import { PagedTestsReturnValue } from "@/types/queries";
 import React, { Suspense } from "react";
 
+interface TestPagerProps {
+  title: string;
+  promise: Promise<PagedTestsReturnValue>;
+  userId: string;
+}
+
 export const Tests = async ({
+  title,
+  promise,
   userId,
   searchParams,
-}: { userId: string } & SearchParamProps) => {
-  const promise = getPagedTests({ userId, searchParams });
-
+}: TestPagerProps & SearchParamProps) => {
   return (
     <Card
       className={"mx-auto h-[628px] space-y-10 border-none p-6 shadow-none"}
     >
       <CardHeader className="p-0">
-        <CardTitle>Tests where you have test results</CardTitle>
+        <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent className="p-0">
         <div className="flex flex-col gap-8">

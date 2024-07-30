@@ -1,18 +1,11 @@
 import prisma from "@/lib/prisma";
 import { SearchParamProps } from "@/types";
-import { TestWithCreator } from "@/types/prisma";
+import { PagedTestsReturnValue } from "@/types/queries";
 
-export interface GetPagedTestsReturns {
-  tests: TestWithCreator[];
-  count: number;
-  page: number;
-  totalPages: number;
-}
-
-export async function getPagedTests({
+export async function getTestsWithTestAttempts({
   userId,
   searchParams,
-}: { userId: string } & SearchParamProps): Promise<GetPagedTestsReturns> {
+}: { userId: string } & SearchParamProps): Promise<PagedTestsReturnValue> {
   //
 
   async function getCount({
