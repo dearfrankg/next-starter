@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { getLastestTestAttempts } from "@/queries/test-attempts";
 import { SearchParamProps } from "@/types";
-import { TestAttemptTableItem, TestWithCreator } from "@/types/prisma";
+import { TestAttemptTableItem } from "@/types/prisma";
 import React, { Suspense } from "react";
 
 interface ChartProps {
