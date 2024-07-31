@@ -130,7 +130,7 @@ model TestAttempt {
 
   correctCount   Int
   incorrectCount Int
-  percentage     Decimal @db.Decimal(5, 2)
+  percentage     String
 
   answers          Json
   incorrectAnswers Json
