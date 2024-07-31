@@ -15,7 +15,7 @@ export async function getGeneratedTests({
     userId: string;
     query: string;
   }) {
-    return prisma.test.count({
+    return prisma.generatedTest.count({
       where: {
         AND: [
           { topic: { contains: query, mode: "insensitive" } }, //
@@ -47,12 +47,8 @@ export async function getGeneratedTests({
         id: true,
         topic: true,
         description: true,
-        creator: {
-          select: {
-            id: true,
-            name: true,
-          },
-        },
+        startedAt: true,
+        finishedAt: true,
       },
       orderBy: {
         startedAt: "desc",

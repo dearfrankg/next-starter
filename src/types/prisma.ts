@@ -35,3 +35,13 @@ export type TestAttemptTableItem = Prisma.TestAttemptGetPayload<{
     };
   };
 }>;
+
+export type GeneratedTest = Prisma.GeneratedTestGetPayload<{
+  select: {
+    id: true;
+    topic: true;
+    description: true;
+    startedAt: true;
+    finishedAt: true;
+  };
+}>;

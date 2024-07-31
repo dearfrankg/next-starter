@@ -4,7 +4,11 @@ interface DashboardLayoutProps {
   bottom: React.ReactNode;
 }
 
-export function DashboardLayout({ left, right, bottom }: DashboardLayoutProps) {
+export function DashboardLayout({
+  left = "",
+  right = "",
+  bottom = "",
+}: DashboardLayoutProps) {
   return (
     <div className="flex w-full flex-col gap-8">
       <div className="flex flex-wrap gap-8">

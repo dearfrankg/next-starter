@@ -1,10 +1,9 @@
 import { SearchParamProps } from "@/types";
-import { TestWithCreator } from "@/types/prisma";
 import { GoCheck } from "react-icons/go";
 import { RiSurveyLine } from "react-icons/ri";
 
 interface TestProps {
-  test: TestWithCreator;
+  test: any;
 }
 
 export function UserComponent({

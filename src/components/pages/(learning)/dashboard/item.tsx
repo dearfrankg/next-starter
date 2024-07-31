@@ -3,16 +3,13 @@ import { TestWithCreator } from "@/types/prisma";
 import { GoCheck } from "react-icons/go";
 import { RiSurveyLine } from "react-icons/ri";
 
-interface TestProps {
+export interface TestProps extends SearchParamProps {
   test: TestWithCreator;
 }
 
-export function UserComponent({
-  test,
-  searchParams,
-}: SearchParamProps & TestProps) {
+export function Test({ test, searchParams }: TestProps) {
   if (!test) {
-    return <div> No test found</div>;
+    return <div>No test found</div>;
   }
 
   const { id, topic, description } = test;

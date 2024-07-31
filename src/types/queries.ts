@@ -1,7 +1,5 @@
-import { TestWithCreator } from "@/types/prisma";
-
 export interface PagedTestsReturnValue {
-  tests: TestWithCreator[];
+  tests: any[];
   count: number;
   page: number;
   totalPages: number;

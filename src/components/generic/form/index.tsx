@@ -1,6 +1,6 @@
 import { InputForm } from "./form";
 import { FormCard } from "./form-card";
-import { Field, FieldComponents } from "@/types/generator-form";
+import { Field } from "@/types/generator-form";
 
 interface FormProps {
   formTitle: string;

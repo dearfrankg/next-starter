@@ -1,7 +1,7 @@
+import { SkeletonControl } from "./control-skel";
 import { Controls } from "./controls";
-import { SkeletonControl } from "./skel-control";
-import SkeletonUserList from "./skel-user-list";
-import TestList from "./user-list";
+import ItemList from "./list-items";
+import ListSkels from "./list-skels";
 import { Await } from "@/components/await";
 import {
   Card,
@@ -12,22 +12,25 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { SearchParamProps } from "@/types";
-import { TestWithCreator } from "@/types/prisma";
 import { PagedTestsReturnValue } from "@/types/queries";
 import React, { Suspense } from "react";
 
-interface TestPagerProps {
+interface TestPagerProps extends SearchParamProps {
   title: string;
   promise: Promise<PagedTestsReturnValue>;
-  userId: string;
+  renderItem: ({ test, searchParams }: any) => React.ReactNode;
+  renderSkel: ({ test }: any) => React.ReactNode;
 }
 
-export const Tests = async ({
+export const Pager = async ({
   title,
   promise,
-  userId,
   searchParams,
-}: TestPagerProps & SearchParamProps) => {
+  renderItem,
+  renderSkel,
+}: TestPagerProps) => {
+  //
+
   return (
     <Card
       className={"mx-auto h-[628px] space-y-10 border-none p-6 shadow-none"}
@@ -45,10 +48,16 @@ export const Tests = async ({
             </Await>
           </Suspense>
 
-          <Suspense fallback={<SkeletonUserList />}>
+          <Suspense fallback={<ListSkels {...{ renderSkel }} />}>
             <Await promise={promise}>
-              {({ tests }: { tests: TestWithCreator[] }) => (
-                <TestList {...{ tests, searchParams }} />
+              {({ tests }: { tests: any[] }) => (
+                <ItemList
+                  {...{
+                    tests,
+                    searchParams,
+                    renderItem,
+                  }}
+                />
               )}
             </Await>
           </Suspense>

@@ -1,4 +1,4 @@
-export function SkeletonUser() {
+export function TestSkeleton() {
   return (
     <div className="flex animate-pulse items-center justify-between gap-4">
       <div className="size-8 border-2 border-slate-200 bg-slate-200"></div>
