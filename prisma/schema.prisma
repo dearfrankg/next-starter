@@ -25,10 +25,11 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  Test         Test[]
-  TestAttempts TestAttempt[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  Test          Test[]
+  TestAttempts  TestAttempt[]
+  GeneratedTest GeneratedTest[]
 
   @@map("users")
 }
@@ -137,12 +138,17 @@ model TestAttempt {
   @@map("test_attempts")
 }
 
-// ERD
-//
-// [User] 1 --- * [Test]
-// [Test] 1 --- * [Question]
-// [Question] 1 --- * [Choice]
-//
-// [User] 1 --- * [TestAttempt]
-// [Test] 1 --- * [TestAttempt]
-//
+model GeneratedTest {
+  id          String @id @default(cuid())
+  topic       String
+  description String
+  progress    String
+  status      String
+  userId      String
+  creator     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  startedAt  DateTime  @default(now())
+  finishedAt DateTime?
+
+  @@map("generated_tests")
+}
