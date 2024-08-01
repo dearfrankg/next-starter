@@ -27,7 +27,7 @@ export async function Dashboard({ userId, searchParams }: DashboardProps) {
       renderSkel: () => <TestSkeleton />,
     },
     chart: {
-      title: "Chart of test results",
+      title: "Chart of test result percentages",
       userId,
       searchParams,
     },
