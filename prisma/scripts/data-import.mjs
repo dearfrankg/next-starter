@@ -34,6 +34,7 @@ function readDumpFile() {
 async function deleteTables() {
   // Delete all existing data
   // Note: Order matters here due to foreign key constraints
+  await prisma.generatedTest.deleteMany();
   await prisma.testAttempt.deleteMany();
   await prisma.choice.deleteMany();
   await prisma.question.deleteMany();
@@ -105,6 +106,16 @@ async function importIntoTables(jsonData) {
     console.log(`Imported ${jsonData.testAttempts.length} testAttempts`);
   } else {
     console.log("No testAttempts data found or invalid format");
+  }
+
+  // Import testAttempts
+  if (jsonData.generatedTests && Array.isArray(jsonData.generatedTests)) {
+    await prisma.generatedTest.createMany({
+      data: jsonData.generatedTests,
+    });
+    console.log(`Imported ${jsonData.generatedTests.length} generatedTests`);
+  } else {
+    console.log("No generatedTests data found or invalid format");
   }
 
   console.log("Data import completed successfully");

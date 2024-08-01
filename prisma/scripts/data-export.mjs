@@ -14,6 +14,7 @@ async function exportData() {
     questions: await prisma.question.findMany(),
     choices: await prisma.choice.findMany(),
     testAttempts: await prisma.testAttempt.findMany(),
+    generatedTests: await prisma.generatedTest.findMany(),
   };
 
   fs.writeFileSync(
