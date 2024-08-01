@@ -30,6 +30,7 @@ model User {
   Test          Test[]
   TestAttempts  TestAttempt[]
   GeneratedTest GeneratedTest[]
+  likedTests    LikedTest[]
 
   @@map("users")
 }
@@ -87,6 +88,7 @@ model Test {
 
   questions    Question[]
   testAttempts TestAttempt[]
+  likedBy      LikedTest[]
 
   @@map("tests")
 }
@@ -151,4 +153,16 @@ model GeneratedTest {
   finishedAt DateTime?
 
   @@map("generated_tests")
+}
+
+model LikedTest {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  testId    String
+  test      Test     @relation(fields: [testId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, testId])
+  @@map("liked_tests")
 }
