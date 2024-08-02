@@ -14,6 +14,19 @@ export type TestWithCreator = Prisma.TestGetPayload<{
   };
 }>;
 
+export type LikedTests = Prisma.TestGetPayload<{
+  select: {
+    id: true;
+    topic: true;
+    description: true;
+    likedBy: {
+      select: {
+        id: true;
+      };
+    };
+  };
+}>;
+
 export type TestAttemptTableItem = Prisma.TestAttemptGetPayload<{
   select: {
     id: true;

@@ -2,8 +2,11 @@ import { Test, TestProps } from "./item";
 import { TestSkeleton } from "./item-skel";
 import { StudyLayout } from "./layout";
 import { Pager } from "@/components/generic/pager";
+import { jsonString } from "@/lib/utils";
 import { getGeneratedTests } from "@/queries/tests/generated-tests";
+import { getTestsWithLiked } from "@/queries/tests/tests-and-liked-tests";
 import { SearchParamProps } from "@/types";
+import { LikedTests } from "@/types/prisma";
 
 interface StudyProps extends SearchParamProps {
   userId: string;
@@ -15,7 +18,7 @@ export async function Study({ userId, searchParams }: StudyProps) {
   const props = {
     tests: {
       title: "Test Selector",
-      promise: getGeneratedTests({ userId, searchParams }),
+      promise: getTestsWithLiked({ userId, searchParams }),
       searchParams,
       renderItem: ({ test, searchParams }: TestProps) => (
         <Test {...{ test, searchParams }} />

@@ -14,7 +14,7 @@ export function jsonString(data: any) {
   return JSON.stringify(data, null, 2);
 }
 
-export function timeAgo(date: Date) {
+export function timeAgo(date: string) {
   return formatDistance(new Date(date), new Date(), {
     addSuffix: true,
   });

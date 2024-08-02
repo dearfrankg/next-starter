@@ -1,13 +1,12 @@
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { timeAgo } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { jsonString } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
-import { GeneratedTest } from "@/types/prisma";
-import { GoCheck } from "react-icons/go";
+import { LikedTests } from "@/types/prisma";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { RiSurveyLine } from "react-icons/ri";
 
 export interface TestProps extends SearchParamProps {
-  test: GeneratedTest;
+  test: LikedTests;
 }
 
 export function Test({ test, searchParams }: TestProps) {
@@ -15,7 +14,7 @@ export function Test({ test, searchParams }: TestProps) {
     return <div>No test found</div>;
   }
 
-  const { id, topic, startedAt } = test;
+  const { id, topic, description } = test;
   const { selectedTest } = searchParams;
   const testSelected = selectedTest === id;
 
@@ -27,16 +26,25 @@ export function Test({ test, searchParams }: TestProps) {
       <div className="flex-auto space-y-1">
         <p className="text-sm font-medium leading-snug">{topic}</p>
         <p className="text-sm leading-snug text-muted-foreground">
-          Started: {timeAgo(startedAt)}
+          {description}
         </p>
       </div>
-      {topic !== "Algebra" && <Badge className="rounded-full">Complete</Badge>}
-      {topic === "Algebra" && (
-        <div className="flex w-[80px] flex-col items-center">
-          <p className="text-sm">80%</p>
-          <Progress value={80} className="w-full" />
-        </div>
-      )}
+      <Liked {...{ test }} />
+    </div>
+  );
+}
+
+function Liked({ test }: { test: LikedTests }) {
+  //
+  return (
+    <div>
+      <Button variant="ghost" className="text-red-400">
+        {test.likedBy.length ? (
+          <AiFillHeart className="size-4" />
+        ) : (
+          <AiOutlineHeart className="size-4" />
+        )}
+      </Button>
     </div>
   );
 }
