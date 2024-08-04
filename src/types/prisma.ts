@@ -14,11 +14,12 @@ export type TestWithCreator = Prisma.TestGetPayload<{
   };
 }>;
 
-export type LikedTests = Prisma.TestGetPayload<{
+export type LikedTest = Prisma.TestGetPayload<{
   select: {
     id: true;
     topic: true;
     description: true;
+    userId: true;
     likedBy: {
       select: {
         id: true;

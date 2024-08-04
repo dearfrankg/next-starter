@@ -17,17 +17,20 @@ export function Item({ testId, searchParams, children }: ItemProps) {
   const testSelected = selectedTest == testId;
   const testClass = testSelected ? "bg-accent" : "";
 
-  return (
-    <li className={cn("rounded-lg border p-2 hover:bg-accent", testClass)}>
-      <Link
+  return <>{children}</>;
+  // <li className={cn("rounded-lg border p-2 hover:bg-accent", testClass)}>
+  {
+    /* <Link
         href={`${pathname}?${createNewSearchParams({
           searchParams,
           name: "selectedTest",
           value: testId,
         })}`}
-      >
-        {children}
-      </Link>
-    </li>
-  );
+      > */
+  }
+
+  {
+    /* </Link> */
+  }
+  // </li>
 }

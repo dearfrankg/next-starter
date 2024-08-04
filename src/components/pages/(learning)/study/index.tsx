@@ -2,9 +2,9 @@ import { Test, TestProps } from "./item";
 import { TestSkeleton } from "./item-skel";
 import { StudyLayout } from "./layout";
 import { Pager } from "@/components/generic/pager";
+import { getGeneratedTests } from "@/db/queries/tests/generated-tests";
+import { getTestsWithLiked } from "@/db/queries/tests/tests-and-liked-tests";
 import { jsonString } from "@/lib/utils";
-import { getGeneratedTests } from "@/queries/tests/generated-tests";
-import { getTestsWithLiked } from "@/queries/tests/tests-and-liked-tests";
 import { SearchParamProps } from "@/types";
 import { LikedTests } from "@/types/prisma";
 
