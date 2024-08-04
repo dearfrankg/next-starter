@@ -14,13 +14,14 @@ export interface TestProps extends SearchParamProps {
 }
 
 export function Test({ test, searchParams }: TestProps) {
+  const pathname = usePathname();
+
   if (!test) {
     return <div>No test found</div>;
   }
 
   const { id: testId, topic, description } = test;
 
-  const pathname = usePathname();
   const { selectedTest } = searchParams;
   const testSelected = selectedTest == testId;
   const testClass = testSelected ? "bg-accent" : "";

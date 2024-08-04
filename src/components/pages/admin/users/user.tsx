@@ -38,7 +38,9 @@ export function UserComponent({ user, memberSince = false }: UserProps) {
       <div className="flex flex-col items-end">
         <div>{role === "admin" && <Badge>Admin</Badge>}</div>
         {memberSince && (
-          <div className="text-sm">Member since: {timeAgo(createdAt)}</div>
+          <div className="text-sm">
+            Member since: {timeAgo(createdAt.toString())}
+          </div>
         )}
       </div>
     </div>
