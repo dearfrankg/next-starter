@@ -13,7 +13,7 @@ export default async function DashBoard({ searchParams }: SearchParamProps) {
     <PageWithNav>
       <SubMenu title="Learning" />
 
-      <H2>AI Test Generator</H2>
+      <H2>Generate Course</H2>
 
       <AITestGenerator {...{ userId, searchParams }} />
     </PageWithNav>
