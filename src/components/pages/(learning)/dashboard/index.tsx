@@ -6,7 +6,7 @@ import { DashboardLayout } from "./layout";
 import { Chart } from "@/components/generic/chart";
 import { Pager } from "@/components/generic/pager";
 import { TestAttempts } from "@/components/generic/test-attempts";
-import { getTestsWithTestAttempts } from "@/queries/tests/test-with-test-attempts";
+import { getTestsWithTestAttempts } from "@/db/queries/tests/test-with-test-attempts";
 import { SearchParamProps } from "@/types";
 
 interface DashboardProps extends SearchParamProps {

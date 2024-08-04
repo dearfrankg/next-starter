@@ -4,7 +4,7 @@ import { TestSkeleton } from "./item-skel";
 import { AITestGeneratorLayout } from "./layout";
 import { Form } from "@/components/generic/form";
 import { Pager } from "@/components/generic/pager";
-import { getGeneratedTests } from "@/queries/tests/generated-tests";
+import { getGeneratedTests } from "@/db/queries/tests/generated-tests";
 import { SearchParamProps } from "@/types";
 
 interface AITestGeneratorProps extends SearchParamProps {

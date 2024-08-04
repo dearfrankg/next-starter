@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getLastestTestAttempts } from "@/queries/test-attempts";
+import { getLastestTestAttempts } from "@/db/queries/test-attempts";
 import { SearchParamProps } from "@/types";
 import React, { Suspense } from "react";
 

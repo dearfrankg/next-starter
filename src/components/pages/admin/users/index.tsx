@@ -12,7 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getPagedUsers } from "@/queries/users";
+import { getPagedUsers } from "@/db/queries/users";
 import { SearchParamProps } from "@/types";
 import { User } from "@prisma/client";
 import React, { Suspense } from "react";
