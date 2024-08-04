@@ -22,7 +22,7 @@ export async function getLastestTestAttempts({
     orderBy: {
       startedAt: "desc",
     },
-    take: 8,
+    take: 5,
     select: {
       id: true,
       startedAt: true,

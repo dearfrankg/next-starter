@@ -18,7 +18,7 @@ export async function Dashboard({ userId, searchParams }: DashboardProps) {
 
   const props = {
     tests: {
-      title: "Tests that you have taken",
+      title: "Select a test to see your results",
       promise: getTestsWithTestAttempts({ userId, searchParams }),
       searchParams,
       renderItem: ({ test, searchParams }: TestProps) => (
@@ -32,7 +32,7 @@ export async function Dashboard({ userId, searchParams }: DashboardProps) {
       searchParams,
     },
     testAttempts: {
-      title: "Latest test results",
+      title: "Last 5 test results",
       userId,
       searchParams,
     },
