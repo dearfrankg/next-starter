@@ -1,3 +1,4 @@
+import SelectCourses from "../../../../components/pages/(learning)/select";
 import { H2 } from "@/components/heading";
 import PageWithNav from "@/components/page-with-nav";
 import SubMenu from "@/components/submenu";
@@ -11,6 +12,8 @@ export default async function DashBoard() {
       <SubMenu title="Learning" />
 
       <H2>Select Course</H2>
+
+      <SelectCourses />
     </PageWithNav>
   );
 }

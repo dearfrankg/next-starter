@@ -134,4 +134,10 @@ export const config: Config = {
       ],
     },
   ],
+  categories: [
+    { name: "Business" },
+    { name: "Academic Disciplines" },
+    { name: "Practical Applications" },
+    { name: "Personal Development" },
+  ],
 };

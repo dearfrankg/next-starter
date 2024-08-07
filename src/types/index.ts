@@ -17,6 +17,10 @@ export interface NavItem {
   children?: NavItem[];
 }
 
+export interface Category {
+  name: string;
+}
+
 export interface Config {
   baseUrl: string;
   company: {
@@ -26,6 +30,7 @@ export interface Config {
   };
   signIn: { redirectUrl: string };
   nav: NavItem[];
+  categories: Category[];
 }
 
 export interface NavSectionProps {

@@ -14,7 +14,7 @@ export async function Study({ userId, searchParams }: StudyProps) {
 
   const props = {
     tests: {
-      title: "Test Selector",
+      title: "Course Selector",
       promise: getTestsWithLiked({ userId, searchParams }),
       searchParams,
       renderItem: ({ test, searchParams }: TestProps) => (

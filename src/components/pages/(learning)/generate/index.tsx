@@ -19,7 +19,7 @@ export async function AITestGenerator({
 
   const props = {
     form: {
-      formTitle: "AI Test Generator Form",
+      formTitle: "New Course Form",
       userId,
       fields,
     },
