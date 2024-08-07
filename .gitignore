@@ -37,3 +37,6 @@ next-env.d.ts
 
 # prisma
 prisma/data
+
+# public/images
+/public/images
