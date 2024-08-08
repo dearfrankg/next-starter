@@ -27,7 +27,12 @@ export function CourseCard({
     <Card className="h-[450px] w-[350px]">
       <CardHeader className="p-4">
         <div className="relative aspect-[5/3] w-full">
-          <Image src={imagePath} alt={title} className="object-cover" fill />
+          <Image
+            src={imagePath}
+            alt={title}
+            className="rounded-sm object-cover"
+            fill
+          />
         </div>
       </CardHeader>
       <CardContent>
